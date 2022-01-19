@@ -258,11 +258,13 @@ let count=0;
     }
     
   }
-	function resultchange(event){
-    // console.log(event);
-    if(event==completed){
-      console.log(event);
-    }
-  }
-
+    // function resultchange(event){
+    //   console.log(event);
+    //   var x = (event.value || event.options[event.selectedIndex].value);  //crossbrowser solution =)
+    //   alert(x);
+      
+    // }
+//   document.getElementById('dropchange').onchange = function(event) {
+//     alert(this.value);
+// }
 
