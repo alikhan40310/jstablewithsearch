@@ -258,6 +258,11 @@ let count=0;
     }
     
   }
-	
+	function resultchange(event){
+    // console.log(event);
+    if(event==completed){
+      console.log(event);
+    }
+  }
 
 

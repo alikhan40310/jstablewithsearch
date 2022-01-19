@@ -20,7 +20,11 @@
 	<div class="container mt-4">
 		<div class="" id="">
 			<input class="form-control mb-4" id="myinput" placeholder="Enter value to find" type="text" onkeyup="findvalue()" name="">
-			<button class="btn btn-primary" id="completeditem" onclick="compitem()">Completed</button>
+			<select name="dropdown" id="dropchange" onchange="resultchange(event)">
+				<option  id="completeditem" value="completed">completed</option>
+				<option value="uncompleted">uncompleted</option>
+				<option value="all">all</option>
+			  </select>
 			<p id="alertmessage" class="h2"></p>
 			<table class="table" id="tableappend">
 				<thead id="thead_data">
