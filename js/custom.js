@@ -256,7 +256,7 @@ let count=0;
         console.log(array[i]);
       }
     }
-    
+     
   }
     // function resultchange(event){
     //   console.log(event);
