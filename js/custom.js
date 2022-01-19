@@ -237,8 +237,52 @@ let count=0;
 // when user click on completed button
 // then all the data shown in table in completed
 // as well as with other option as well.
+  
 
-  function compitem(){
+// let globarray=[];
+  
+  function resultchange(event){
+    // dropdown condition complited
+    if(event.target.value==="completed"){
+
+        // globarray = array.filter(function(resultfiter){
+        //   return resultfiter.completed == true;
+         
+        // });
+        document.getElementById("tbodydata").innerHTML="";
+
+        for(let i=0; i<array.length;i++){
+          let tbodyrow = document.createElement("tr");
+          let tdata1 = document.createElement("td");
+          let tdata2 = document.createElement("td");
+          let tdata3 = document.createElement("td");
+          tbodyrow.appendChild(tdata1);
+          tbodyrow.appendChild(tdata2);
+          tbodyrow.appendChild(tdata3);
+          tdata1.innerHTML = array[i].id;
+          tdata2.innerHTML = array[i].title;
+          tdata3.innerHTML = array[i].completed;
+          if(array[i].completed == true){
+            // document.getElementById("tbodydata").appendChild(tbodyrow);
+          document.getElementById("tfootdata").style.display = "none";
+          // console.log(globarray[i]);
+          document.getElementById("tbodydata").appendChild(tbodyrow);
+
+          
+            // console condtion completed
+          if(array[i].completed== true){
+            count++;
+          }
+          console.log(count);
+
+        }
+    }
+      
+  }
+  // dropdown condition uncomplited
+  else if(event.target.value==="uncompleted"){
+    document.getElementById("tbodydata").innerHTML="";
+
     for(let i=0; i<array.length;i++){
       let tbodyrow = document.createElement("tr");
       let tdata1 = document.createElement("td");
@@ -248,23 +292,48 @@ let count=0;
       tbodyrow.appendChild(tdata2);
       tbodyrow.appendChild(tdata3);
       tdata1.innerHTML = array[i].id;
-      tdata1.innerHTML = array[i].title;
-      tdata1.innerHTML = array[i].completed;
-      if(array[i].completed == true){
-        document.getElementById("tbodydata").appendChild(tbodyrow);
-        // document.getElementById("tfootdata").style.display = "none";
-        console.log(array[i]);
-      }
-    }
-     
-  }
-    // function resultchange(event){
-    //   console.log(event);
-    //   var x = (event.value || event.options[event.selectedIndex].value);  //crossbrowser solution =)
-    //   alert(x);
-      
-    // }
-//   document.getElementById('dropchange').onchange = function(event) {
-//     alert(this.value);
-// }
+      tdata2.innerHTML = array[i].title;
+      tdata3.innerHTML = array[i].completed;
+      if(array[i].completed == false){
+        // document.getElementById("tbodydata").appendChild(tbodyrow);
+      document.getElementById("tfootdata").style.display = "none";
+      // console.log(globarray[i]);
+      document.getElementById("tbodydata").appendChild(tbodyrow);
 
+      // console condition false
+      if(array[i].completed== false){
+        count++;
+      }
+      console.log(count);
+
+    }
+
+  }
+
+
+  }
+  // for all condition true
+  else if(event.target.value==="all"){
+    document.getElementById("tbodydata").innerHTML="";
+
+    for(let i=0; i<array.length;i++){
+      let tbodyrow = document.createElement("tr");
+      let tdata1 = document.createElement("td");
+      let tdata2 = document.createElement("td");
+      let tdata3 = document.createElement("td");
+      tbodyrow.appendChild(tdata1);
+      tbodyrow.appendChild(tdata2);
+      tbodyrow.appendChild(tdata3);
+      tdata1.innerHTML = array[i].id;
+      tdata2.innerHTML = array[i].title;
+      tdata3.innerHTML = array[i].completed;
+      
+        // document.getElementById("tbodydata").appendChild(tbodyrow);
+      document.getElementById("tfootdata").style.display = "none";
+      // console.log(globarray[i]);
+      document.getElementById("tbodydata").appendChild(tbodyrow);
+
+    }
+  }
+
+}
