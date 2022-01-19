@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Js object table</title>
+	<!-- CSS File attachment -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<!-- fevicon icon -->
+	<link rel="icon" type="image/jpg" href="image/avatar.png">
+	<!-- google font attachment -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="" id="">
+			<input class="form-control mb-4" id="myinput" placeholder="Enter value to find" type="text" onkeyup="findvalue()" name="">
+			<button class="btn btn-primary" id="completeditem" onclick="compitem()">Completed</button>
+			<p id="alertmessage" class="h2"></p>
+			<table class="table" id="tableappend">
+				<thead id="thead_data">
+					<td>ID</td>
+					<td>Title</td>
+					<td>Completed</td>
+				</thead>
+				<tbody id="tbodydata"></tbody>
+				<tfoot id="tfootdata"></tfoot>
+			</table>
+		</div>
+	</div>
+	<!-- jquery attachment -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/fontawesome.min.js"></script>
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+	
+</body>
+</html>

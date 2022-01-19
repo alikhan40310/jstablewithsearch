@@ -1,0 +1,22 @@
+body{
+	font-size: 15px;
+	color: #000;
+	background-color: #fff;
+	/*google fonts*/
+	font-family: 'Nunito Sans', sans-serif;
+}
+.clear{clear: both;}
+table{
+	border-collapse: collapse;
+	width: 50%;
+	font-size: 18px;
+}
+th, td{
+	border: 1px solid #ddd;
+	
+}
+thead{font-weight: bold;}
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
