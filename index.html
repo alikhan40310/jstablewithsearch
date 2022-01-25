@@ -40,17 +40,16 @@
 				<tfoot id="tfootdata"></tfoot>
 			</table>
 			<div class="mb-4 d-flex gap-2 flex-row justify-content-between">	
-				<div class="but">
+				<div class="item">
 				<button class="btn btn-primary" id="firstbtn" onclick="firstfunc()">First</button>
 				<button class="btn btn-primary" id="nextbtn" onclick="nextfunc()">Next</button>
 				<button class="btn btn-primary" id="prevbtn" onclick="prevfunc()">previous</button>
 				<button class="btn btn-primary" id="lastbtn" onclick="lastfunc()">Last</button>
 				</div>
-				<div class="itedm">
-					<select name="dropdown" class="btn btn-primary" id="slicepage" onchange="sliceArray(event)">
-						<option id="" value="15" selected>please select table row</option>
-		
-						<option id="" value="10">10</option>
+				<div class="item">
+					<select name="slicepage" selected class="btn btn-primary" id="slicepage" onchange="sliceArray(event)">
+						<option id="" value="15" >please select table row</option>
+						<option id="" value="10" selected>10</option>
 						<option value="25">25</option>
 						<option value="50" >50</option>
 					</select>

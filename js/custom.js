@@ -1654,7 +1654,6 @@ const lastItemIndex = array.length-1;
           document.getElementById('tbodydata').appendChild(tbodyrow);
         }
     }
-    
     else if(event.target.value==="50"){
       document.getElementById("tbodydata").innerHTML="";
       document.getElementById("tfootdata").innerHTML="";
