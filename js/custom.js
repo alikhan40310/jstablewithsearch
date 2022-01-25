@@ -1450,10 +1450,19 @@ function firstfunc(){
 
 // last page
 
-const size3 = 10;
-const items3 = array.slice(189, 200);
+let start, results, end;
+results = 10;
 
 function lastfunc(){
+      // 10    index-1 find start;
+  let start, results, end;
+  results = 10;
+  end = array.length-1;
+  start = end -10;
+
+const items3 = array.slice(start, end);
+
+
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
 
@@ -1483,3 +1492,120 @@ function lastfunc(){
   }
 }
 
+
+     
+
+// next  button functionality
+    
+  start=0;
+  end=10;
+function nextfunc(){
+  start+=10;
+  end+=10;
+  
+
+  const items3 = array.slice(start, end);
+
+// when user click on next button when
+// the counter reached a specific conditon
+// or a last page button will be disabled
+
+
+// if last page reaced a specific condition of counter
+// Disable next button if we're on the last page
+// How to know we are on last page?
+// 
+const lastItemIndex = array.length - 1;
+
+  if(lastItemIndex<end){
+      document.getElementById("tbodydata").innerHTML ="";
+      document.getElementById("tfootdata").style.display = "none";
+      const disablebtn = document.getElementById("nextbtn");
+      disablebtn.disabled = true;
+  }
+  else{
+    document.getElementById("tbodydata").innerHTML ="";
+      document.getElementById("tfootdata").style.display = "none";
+      const disablebtn = document.getElementById("nextbtn");
+      disablebtn.disabled = false;
+  }
+    for(let i=0; i<items3.length;i++){
+      let tbodyrow = document.createElement("tr");
+      let tdata = document.createElement('td');
+      let tdata2 = document.createElement("td");
+      let tdata3 = document.createElement("td");
+      tbodyrow.appendChild(tdata);
+      tbodyrow.appendChild(tdata2);
+      tbodyrow.appendChild(tdata3)
+      tdata.innerHTML = items3[i].id;
+      tdata2.innerHTML = items3[i].title;
+      // completed item in table conditon
+      if(items3[i].completed== true){
+        tdata3.innerHTML ="completed";
+        count++;
+      }
+      else{
+        tdata3.innerHTML ="pending";
+      }
+      document.getElementById('tbodydata').appendChild(tbodyrow);
+  }
+}
+
+
+// previous  button functionality
+    
+
+start = 0;
+end = start + 10;
+function prevfunc(){
+  start -= 10;
+  end -= 10;
+const lastItemIndex = array.length-1;
+
+let firstindex = end + 10;
+const items3 = array.slice(start, end);
+console.log(start);
+
+
+  if(firstindex-1>items3){
+      document.getElementById("tbodydata").innerHTML ="";
+      document.getElementById("tfootdata").style.display = "none";
+      const disablebtn = document.getElementById("prevbtn");
+      disablebtn.disabled = true;
+      
+  }
+  else{
+    document.getElementById("tbodydata").innerHTML ="";
+      document.getElementById("tfootdata").style.display = "none";
+      const disablebtn = document.getElementById("prevbtn");
+      disablebtn.disabled = false;
+  }
+
+
+
+document.getElementById("tbodydata").innerHTML ="";
+document.getElementById("tfootdata").style.display = "none";
+
+  for(let i=0; i<items3.length;i++){
+    let tbodyrow = document.createElement("tr");
+    let tdata = document.createElement('td');
+    let tdata2 = document.createElement("td");
+    let tdata3 = document.createElement("td");
+    tbodyrow.appendChild(tdata);
+    tbodyrow.appendChild(tdata2);
+    tbodyrow.appendChild(tdata3)
+    tdata.innerHTML = items3[i].id;
+    tdata2.innerHTML = items3[i].title;
+    // completed item in table conditon
+    if(items3[i].completed== true){
+      tdata3.innerHTML ="completed";
+      count++;
+    }
+    else{
+      tdata3.innerHTML ="pending";
+    }
+    // last 
+
+    document.getElementById('tbodydata').appendChild(tbodyrow);
+}
+}
