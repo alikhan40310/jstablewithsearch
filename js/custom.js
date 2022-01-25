@@ -1310,8 +1310,6 @@ let count=0;
 // then all the data shown in table in completed
 // as well as with other option as well.
   
-
-  
   function resultchange(event){
     // dropdown condition complited
     if(event.target.value==="completed"){
@@ -1320,35 +1318,33 @@ let count=0;
         //   return resultfiter.completed == true;
          
         // });
-        document.getElementById("tbodydata").innerHTML="";
+    document.getElementById("tbodydata").innerHTML="";
 
-        for(let i=0; i<array.length;i++){
-          let tbodyrow = document.createElement("tr");
-          let tdata1 = document.createElement("td");
-          let tdata2 = document.createElement("td");
-          let tdata3 = document.createElement("td");
-          tbodyrow.appendChild(tdata1);
-          tbodyrow.appendChild(tdata2);
-          tbodyrow.appendChild(tdata3);
-          tdata1.innerHTML = array[i].id;
-          tdata2.innerHTML = array[i].title;
-          tdata3.innerHTML = array[i].completed;
-          if(array[i].completed == true){
-            // document.getElementById("tbodydata").appendChild(tbodyrow);
-          document.getElementById("tfootdata").style.display = "none";
-          // console.log(globarray[i]);
-          document.getElementById("tbodydata").appendChild(tbodyrow);
+    for(let i=0; i<array.length;i++){
+      let tbodyrow = document.createElement("tr");
+      let tdata1 = document.createElement("td");
+      let tdata2 = document.createElement("td");
+      let tdata3 = document.createElement("td");
+      tbodyrow.appendChild(tdata1);
+      tbodyrow.appendChild(tdata2);
+      tbodyrow.appendChild(tdata3);
+      tdata1.innerHTML = array[i].id;
+      tdata2.innerHTML = array[i].title;
+      tdata3.innerHTML = array[i].completed;
+        if(array[i].completed == true){
+          // document.getElementById("tbodydata").appendChild(tbodyrow);
+        document.getElementById("tfootdata").style.display = "none";
+        // console.log(globarray[i]);
+        document.getElementById("tbodydata").appendChild(tbodyrow);
 
-          
-            // console condtion completed
-          if(array[i].completed== false){
-            count++;
-          }
-
+          // console condtion completed
+        if(array[i].completed== false){
+          count++;
         }
+
+      }
     }
     console.log(count);
-      
   }
   // dropdown condition uncomplited
   else if(event.target.value==="uncompleted"){
@@ -1394,12 +1390,10 @@ let count=0;
       tdata1.innerHTML = array[i].id;
       tdata2.innerHTML = array[i].title;
       tdata3.innerHTML = array[i].completed;
-      
-        // document.getElementById("tbodydata").appendChild(tbodyrow);
+    
       document.getElementById("tfootdata").style.display = "none";
       // console.log(globarray[i]);
       document.getElementById("tbodydata").appendChild(tbodyrow);
-
     }
   }
 }
@@ -1415,8 +1409,10 @@ const items2 = array.slice(0, size2);
 
 // first page button functionality pagination
 function firstfunc(){
- document.getElementById("firstbtn").disabled =true;
- document.getElementById("prevbtn").disabled =true;
+  document.getElementById("firstbtn").disabled =true;
+  document.getElementById("prevbtn").disabled =true;
+  document.getElementById("lastbtn").disabled =false;
+  document.getElementById("nextbtn").disabled =false;
 
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
@@ -1446,15 +1442,17 @@ function firstfunc(){
 }
 // last page
 
-let start, results, end;
-results = 10;
+  let start, results, end;
+  results = 10;
 
 function lastfunc(){
  document.getElementById("lastbtn").disabled =true;
  document.getElementById("nextbtn").disabled =true;
  document.getElementById("prevbtn").disabled =false;
+ document.getElementById("firstbtn").disabled =false;
 
-    // 10    index-1 find start;
+
+    // 10 index-1 find start;
   let start, results, end;
   results = 10;
   end = array.length-1;
@@ -1465,33 +1463,34 @@ function lastfunc(){
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
 
-    for(let i=0; i<items3.length;i++){
-      let tbodyrow = document.createElement("tr");
-      let tdata = document.createElement('td');
-      let tdata2 = document.createElement("td");
-      let tdata3 = document.createElement("td");
-      tbodyrow.appendChild(tdata);
-      tbodyrow.appendChild(tdata2);
-      tbodyrow.appendChild(tdata3)
-      tdata.innerHTML = items3[i].id;
-      tdata2.innerHTML = items3[i].title;
-      // completed item in table conditon
-      if(items3[i].completed== true){
-        tdata3.innerHTML ="completed";
-        count++;
-      }
-      else{
-        tdata3.innerHTML ="pending";
-      }
-      document.getElementById('tbodydata').appendChild(tbodyrow);
+  for(let i=0; i<items3.length;i++){
+    let tbodyrow = document.createElement("tr");
+    let tdata = document.createElement('td');
+    let tdata2 = document.createElement("td");
+    let tdata3 = document.createElement("td");
+    tbodyrow.appendChild(tdata);
+    tbodyrow.appendChild(tdata2);
+    tbodyrow.appendChild(tdata3)
+    tdata.innerHTML = items3[i].id;
+    tdata2.innerHTML = items3[i].title;
+    // completed item in table conditon
+    if(items3[i].completed== true){
+      tdata3.innerHTML ="completed";
+      count++;
     }
+    else{
+      tdata3.innerHTML ="pending";
+    }
+    document.getElementById('tbodydata').appendChild(tbodyrow);
+  }
 }
 // next  button functionality
     
   start=0;
   end=10;
 function nextfunc(){
- document.getElementById("firstbtn").disabled =false;
+
+  document.getElementById("firstbtn").disabled =false;
 
   start+=10;
   end+=10;
@@ -1551,8 +1550,7 @@ end = start + 10;
 function prevfunc(){
   document.getElementById("lastbtn").disabled =false;
   document.getElementById("prevbtn").disabled =false;
-
- document.getElementById("nextbtn").disabled =false;
+  document.getElementById("nextbtn").disabled =false;
 
   start -= 10;
   end -= 10;
@@ -1566,7 +1564,6 @@ console.log(start);
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = true;
       return document.getElementById("nextbtn").disabled =false;
-      
   }
   else{
       const disablebtn = document.getElementById("prevbtn");
