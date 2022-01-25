@@ -1590,3 +1590,94 @@ const lastItemIndex = array.length-1;
       document.getElementById('tbodydata').appendChild(tbodyrow);
     }
   }
+
+
+  // slice array with dropdown
+
+  // for 10 item of slice array
+  const size2 = 10;
+  const items2 = array.slice(0, size2);
+  // for 25 item of slice array
+  const size3 =25;
+  const items3 = array.slice(0, size3);
+  // for 50 item of slice array
+  const size4 =50;
+  const items4 = array.slice(0, size4);
+
+  function sliceArray(event){
+    // condition of 10 pages
+    if(event.target.value==="10"){
+      document.getElementById("tbodydata").innerHTML="";
+      document.getElementById("tfootdata").innerHTML="";
+        for(let i=0; i<items2.length;i++){
+          let tbodyrow = document.createElement("tr");
+          let tdata = document.createElement('td');
+          let tdata2 = document.createElement("td");
+          let tdata3 = document.createElement("td");
+          tbodyrow.appendChild(tdata);
+          tbodyrow.appendChild(tdata2);
+          tbodyrow.appendChild(tdata3)
+          tdata.innerHTML = array[i].id;
+          tdata2.innerHTML = array[i].title;
+          // completed item in table conditon
+          if(array[i].completed== true){
+          tdata3.innerHTML ="completed";
+          count++;
+          }
+          else{
+          tdata3.innerHTML ="pending";
+          }
+          document.getElementById('tbodydata').appendChild(tbodyrow);
+        }
+    }
+    else if(event.target.value==="25"){
+      document.getElementById("tbodydata").innerHTML="";
+      document.getElementById("tfootdata").innerHTML="";
+        for(let i=0; i<items3.length;i++){
+          let tbodyrow = document.createElement("tr");
+          let tdata = document.createElement('td');
+          let tdata2 = document.createElement("td");
+          let tdata3 = document.createElement("td");
+          tbodyrow.appendChild(tdata);
+          tbodyrow.appendChild(tdata2);
+          tbodyrow.appendChild(tdata3)
+          tdata.innerHTML = array[i].id;
+          tdata2.innerHTML = array[i].title;
+          // completed item in table conditon
+          if(array[i].completed== true){
+          tdata3.innerHTML ="completed";
+          count++;
+          }
+          else{
+          tdata3.innerHTML ="pending";
+          }
+          document.getElementById('tbodydata').appendChild(tbodyrow);
+        }
+    }
+    
+    else if(event.target.value==="50"){
+      document.getElementById("tbodydata").innerHTML="";
+      document.getElementById("tfootdata").innerHTML="";
+        for(let i=0; i<items4.length;i++){
+          let tbodyrow = document.createElement("tr");
+          let tdata = document.createElement('td');
+          let tdata2 = document.createElement("td");
+          let tdata3 = document.createElement("td");
+          tbodyrow.appendChild(tdata);
+          tbodyrow.appendChild(tdata2);
+          tbodyrow.appendChild(tdata3)
+          tdata.innerHTML = array[i].id;
+          tdata2.innerHTML = array[i].title;
+          // completed item in table conditon
+          if(array[i].completed== true){
+          tdata3.innerHTML ="completed";
+          count++;
+          }
+          else{
+          tdata3.innerHTML ="pending";
+          }
+          document.getElementById('tbodydata').appendChild(tbodyrow);
+        }
+    }
+
+  }
