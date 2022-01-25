@@ -1201,11 +1201,14 @@ let array = [
   }
 ];
 // slice array with display 10 items
-const size = 15;
+const size = 10;
 const items = array.slice(0, size);
+document.getElementById("firstbtn").disabled =true;
+document.getElementById("prevbtn").disabled =true;
 
-// table js 
-let count=0;
+
+// table js with search and dropdown
+  let count=0;
 	for(let i=0; i<items.length;i++){
 		let tbodyrow = document.createElement("tr");
 		let tdata = document.createElement('td');
@@ -1224,10 +1227,6 @@ let count=0;
 		else{
 			tdata3.innerHTML ="pending";
 		}
-    
-
-
-
 		document.getElementById('tbodydata').appendChild(tbodyrow);
 	}
 		// outside of loop section
@@ -1371,9 +1370,7 @@ let count=0;
             count++;
           }
         }
-
     }
-
   }
   // for all condition true
   else if(event.target.value==="all"){
@@ -1402,13 +1399,18 @@ let count=0;
   when user click on first page then first 10 rows
   of table are shown as well when user click on last
   page then the last 10 rows are display.
-*/
-
-const size2 = 10;
-const items2 = array.slice(0, size2);
+  */
+  let start, results, end;
+  results = 10;
+  start = 0;
 
 // first page button functionality pagination
 function firstfunc(){
+  start=0;
+  end = 10;
+  const items2 = array.slice(start, end);
+  console.log(start);
+
   document.getElementById("firstbtn").disabled =true;
   document.getElementById("prevbtn").disabled =true;
   document.getElementById("lastbtn").disabled =false;
@@ -1435,33 +1437,32 @@ function firstfunc(){
 		else{
 			tdata3.innerHTML ="pending";
 		}
-
 		document.getElementById('tbodydata').appendChild(tbodyrow);
   }
 }
-// last page
-
-  let start, results, end;
-  results = 10;
+// last page functionality
 
 function lastfunc(){
+
   document.getElementById("lastbtn").disabled =true;
   document.getElementById("nextbtn").disabled =true;
   document.getElementById("prevbtn").disabled =false;
   document.getElementById("firstbtn").disabled =false;
 
   // 10 index-1 find start;
-  let start, results, end;
   results = 10;
-  end = array.length-1;
+  end = array.length;
   start = end -10;
 
-  const items3 = array.slice(start, end);
+  const items2 = array.slice(start, end);
+  console.log(start);
 
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
 
-  for(let i=0; i<items3.length;i++){
+  console.log(start);
+
+  for(let i=0; i<items2.length;i++){
     let tbodyrow = document.createElement("tr");
     let tdata = document.createElement('td');
     let tdata2 = document.createElement("td");
@@ -1469,10 +1470,10 @@ function lastfunc(){
     tbodyrow.appendChild(tdata);
     tbodyrow.appendChild(tdata2);
     tbodyrow.appendChild(tdata3)
-    tdata.innerHTML = items3[i].id;
-    tdata2.innerHTML = items3[i].title;
+    tdata.innerHTML = items2[i].id;
+    tdata2.innerHTML = items2[i].title;
     // completed item in table conditon
-    if(items3[i].completed== true){
+    if(items2[i].completed== true){
       tdata3.innerHTML ="completed";
       count++;
     }
@@ -1482,18 +1483,17 @@ function lastfunc(){
     document.getElementById('tbodydata').appendChild(tbodyrow);
   }
 }
-// next  button functionality
-    
-  start=0;
-  end=10;
-function nextfunc(){
 
+// next button functionality
+function nextfunc(){
+ 
   document.getElementById("firstbtn").disabled =false;
 
   start+=10;
   end+=10;
   
-  const items3 = array.slice(start, end);
+  const items2 = array.slice(start, end);
+  console.log(start);
 
 // when user click on next button when
 // the counter reached a specific conditon
@@ -1503,8 +1503,7 @@ function nextfunc(){
 // if last page reaced a specific condition of counter
 // Disable next button if we're on the last page
 // How to know we are on last page?
-// 
-const lastItemIndex = array.length - 1;
+const lastItemIndex = array.length-1;
  document.getElementById("prevbtn").disabled =false;
 
   if(lastItemIndex<end){
@@ -1519,7 +1518,7 @@ const lastItemIndex = array.length - 1;
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = false;
   }
-    for(let i=0; i<items3.length;i++){
+    for(let i=0; i<items2.length;i++){
       let tbodyrow = document.createElement("tr");
       let tdata = document.createElement('td');
       let tdata2 = document.createElement("td");
@@ -1527,10 +1526,10 @@ const lastItemIndex = array.length - 1;
       tbodyrow.appendChild(tdata);
       tbodyrow.appendChild(tdata2);
       tbodyrow.appendChild(tdata3)
-      tdata.innerHTML = items3[i].id;
-      tdata2.innerHTML = items3[i].title;
+      tdata.innerHTML = items2[i].id;
+      tdata2.innerHTML = items2[i].title;
       // completed item in table conditon
-      if(items3[i].completed== true){
+      if(items2[i].completed== true){
         tdata3.innerHTML ="completed";
         count++;
       }
@@ -1541,53 +1540,53 @@ const lastItemIndex = array.length - 1;
   }
 }
 
-// previous  button functionality
+// previous button functionality
+  // start = 0;
+  end = start + 10;
+  function prevfunc(){
+    document.getElementById("lastbtn").disabled =false;
+    document.getElementById("prevbtn").disabled =false;
+    document.getElementById("nextbtn").disabled =false;
 
-start = 0;
-end = start + 10;
-function prevfunc(){
-  document.getElementById("lastbtn").disabled =false;
-  document.getElementById("prevbtn").disabled =false;
-  document.getElementById("nextbtn").disabled =false;
+    start -= 10;
+    end -= 10;
 
-  start -= 10;
-  end -= 10;
+    let firstindex = end + 10;
+    const items2 = array.slice(start, end);
 
-  let firstindex = end + 10;
-  const items3 = array.slice(start, end);
-  console.log(start);
+    console.log({start});
+    console.log({items2});
 
-  if(firstindex>items3){
-      const disablebtn = document.getElementById("prevbtn");
-      disablebtn.disabled = true;
-      return document.getElementById("nextbtn").disabled =false;
-  }
-  else{
-      const disablebtn = document.getElementById("prevbtn");
-      disablebtn.disabled = false;
-  }
-  document.getElementById("tbodydata").innerHTML ="";
-  document.getElementById("tfootdata").style.display = "none";
-
-  for(let i=0; i<items3.length;i++){
-    let tbodyrow = document.createElement("tr");
-    let tdata = document.createElement('td');
-    let tdata2 = document.createElement("td");
-    let tdata3 = document.createElement("td");
-    tbodyrow.appendChild(tdata);
-    tbodyrow.appendChild(tdata2);
-    tbodyrow.appendChild(tdata3)
-    tdata.innerHTML = items3[i].id;
-    tdata2.innerHTML = items3[i].title;
-    // completed item in table conditon
-    if(items3[i].completed== true){
-      tdata3.innerHTML ="completed";
-      count++;
+    if(firstindex>items2){
+        const disablebtn = document.getElementById("prevbtn");
+        disablebtn.disabled = true;
+        return document.getElementById("nextbtn").disabled =false;
     }
     else{
-      tdata3.innerHTML ="pending";
+        const disablebtn = document.getElementById("prevbtn");
+        disablebtn.disabled = false;
     }
+    document.getElementById("tbodydata").innerHTML ="";
+    document.getElementById("tfootdata").style.display = "none";
 
-    document.getElementById('tbodydata').appendChild(tbodyrow);
+    for(let i=0; i<items2.length;i++){
+      let tbodyrow = document.createElement("tr");
+      let tdata = document.createElement('td');
+      let tdata2 = document.createElement("td");
+      let tdata3 = document.createElement("td");
+      tbodyrow.appendChild(tdata);
+      tbodyrow.appendChild(tdata2);
+      tbodyrow.appendChild(tdata3)
+      tdata.innerHTML = items2[i].id;
+      tdata2.innerHTML = items2[i].title;
+      // completed item in table conditon
+      if(items2[i].completed== true){
+        tdata3.innerHTML ="completed";
+        count++;
+      }
+      else{
+        tdata3.innerHTML ="pending";
+      }
+      document.getElementById('tbodydata').appendChild(tbodyrow);
+    }
   }
-}
