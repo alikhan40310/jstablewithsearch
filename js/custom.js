@@ -1365,21 +1365,18 @@ let count=0;
       tdata1.innerHTML = array[i].id;
       tdata2.innerHTML = array[i].title;
       tdata3.innerHTML = array[i].completed;
-      if(array[i].completed == false){
-        // document.getElementById("tbodydata").appendChild(tbodyrow);
-      document.getElementById("tfootdata").style.display = "none";
-      // console.log(globarray[i]);
-      document.getElementById("tbodydata").appendChild(tbodyrow);
-
-      // console condition false
-      if(array[i].completed== false){
-        count++;
-      }
+        if(array[i].completed == false){
+          // document.getElementById("tbodydata").appendChild(tbodyrow);
+          document.getElementById("tfootdata").style.display = "none";
+          // console.log(globarray[i]);
+          document.getElementById("tbodydata").appendChild(tbodyrow);
+          // console condition false
+          if(array[i].completed== false){
+            count++;
+          }
+        }
 
     }
-
-  }
-  console.log(count);
 
   }
   // for all condition true
@@ -1405,7 +1402,6 @@ let count=0;
 
     }
   }
-
 }
 /*
   we can create a button first page and last page
@@ -1445,12 +1441,9 @@ function firstfunc(){
 		}
     // last 
 
-
-
 		document.getElementById('tbodydata').appendChild(tbodyrow);
+  }
 }
-}
-
 // last page
 
 let start, results, end;
@@ -1459,16 +1452,15 @@ results = 10;
 function lastfunc(){
  document.getElementById("lastbtn").disabled =true;
  document.getElementById("nextbtn").disabled =true;
+ document.getElementById("prevbtn").disabled =false;
 
-
-      // 10    index-1 find start;
+    // 10    index-1 find start;
   let start, results, end;
   results = 10;
   end = array.length-1;
   start = end -10;
 
-const items3 = array.slice(start, end);
-
+  const items3 = array.slice(start, end);
 
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
@@ -1491,17 +1483,9 @@ const items3 = array.slice(start, end);
       else{
         tdata3.innerHTML ="pending";
       }
-      // last 
-
-
-
       document.getElementById('tbodydata').appendChild(tbodyrow);
-  }
+    }
 }
-
-
-     
-
 // next  button functionality
     
   start=0;
@@ -1509,11 +1493,9 @@ const items3 = array.slice(start, end);
 function nextfunc(){
  document.getElementById("firstbtn").disabled =false;
 
-
   start+=10;
   end+=10;
   
-
   const items3 = array.slice(start, end);
 
 // when user click on next button when
@@ -1533,14 +1515,12 @@ const lastItemIndex = array.length - 1;
       document.getElementById("tfootdata").style.display = "none";
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = true;
-
   }
   else{
     document.getElementById("tbodydata").innerHTML ="";
       document.getElementById("tfootdata").style.display = "none";
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = false;
-
   }
     for(let i=0; i<items3.length;i++){
       let tbodyrow = document.createElement("tr");
@@ -1564,9 +1544,7 @@ const lastItemIndex = array.length - 1;
   }
 }
 
-
 // previous  button functionality
-    
 
 start = 0;
 end = start + 10;
@@ -1584,7 +1562,6 @@ let firstindex = end + 10;
 const items3 = array.slice(start, end);
 console.log(start);
 
-
   if(firstindex>items3){
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = true;
@@ -1595,8 +1572,6 @@ console.log(start);
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = false;
   }
-
-
 
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
