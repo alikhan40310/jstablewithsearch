@@ -1435,7 +1435,6 @@ function firstfunc(){
 		else{
 			tdata3.innerHTML ="pending";
 		}
-    // last 
 
 		document.getElementById('tbodydata').appendChild(tbodyrow);
   }
@@ -1446,13 +1445,12 @@ function firstfunc(){
   results = 10;
 
 function lastfunc(){
- document.getElementById("lastbtn").disabled =true;
- document.getElementById("nextbtn").disabled =true;
- document.getElementById("prevbtn").disabled =false;
- document.getElementById("firstbtn").disabled =false;
+  document.getElementById("lastbtn").disabled =true;
+  document.getElementById("nextbtn").disabled =true;
+  document.getElementById("prevbtn").disabled =false;
+  document.getElementById("firstbtn").disabled =false;
 
-
-    // 10 index-1 find start;
+  // 10 index-1 find start;
   let start, results, end;
   results = 10;
   end = array.length-1;
@@ -1554,11 +1552,10 @@ function prevfunc(){
 
   start -= 10;
   end -= 10;
-const lastItemIndex = array.length-1;
 
-let firstindex = end + 10;
-const items3 = array.slice(start, end);
-console.log(start);
+  let firstindex = end + 10;
+  const items3 = array.slice(start, end);
+  console.log(start);
 
   if(firstindex>items3){
       const disablebtn = document.getElementById("prevbtn");
@@ -1569,7 +1566,6 @@ console.log(start);
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = false;
   }
-
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
 
@@ -1591,7 +1587,6 @@ console.log(start);
     else{
       tdata3.innerHTML ="pending";
     }
-    // last 
 
     document.getElementById('tbodydata').appendChild(tbodyrow);
   }
