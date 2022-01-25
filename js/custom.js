@@ -1419,6 +1419,9 @@ const items2 = array.slice(0, size2);
 
 // first page button functionality pagination
 function firstfunc(){
+ document.getElementById("firstbtn").disabled =true;
+ document.getElementById("prevbtn").disabled =true;
+
   document.getElementById("tbodydata").innerHTML ="";
   document.getElementById("tfootdata").style.display = "none";
 
@@ -1454,6 +1457,10 @@ let start, results, end;
 results = 10;
 
 function lastfunc(){
+ document.getElementById("lastbtn").disabled =true;
+ document.getElementById("nextbtn").disabled =true;
+
+
       // 10    index-1 find start;
   let start, results, end;
   results = 10;
@@ -1500,6 +1507,9 @@ const items3 = array.slice(start, end);
   start=0;
   end=10;
 function nextfunc(){
+ document.getElementById("firstbtn").disabled =false;
+
+
   start+=10;
   end+=10;
   
@@ -1516,18 +1526,21 @@ function nextfunc(){
 // How to know we are on last page?
 // 
 const lastItemIndex = array.length - 1;
+ document.getElementById("prevbtn").disabled =false;
 
   if(lastItemIndex<end){
       document.getElementById("tbodydata").innerHTML ="";
       document.getElementById("tfootdata").style.display = "none";
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = true;
+
   }
   else{
     document.getElementById("tbodydata").innerHTML ="";
       document.getElementById("tfootdata").style.display = "none";
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = false;
+
   }
     for(let i=0; i<items3.length;i++){
       let tbodyrow = document.createElement("tr");
@@ -1558,6 +1571,11 @@ const lastItemIndex = array.length - 1;
 start = 0;
 end = start + 10;
 function prevfunc(){
+  document.getElementById("lastbtn").disabled =false;
+  document.getElementById("prevbtn").disabled =false;
+
+ document.getElementById("nextbtn").disabled =false;
+
   start -= 10;
   end -= 10;
 const lastItemIndex = array.length-1;
@@ -1567,24 +1585,21 @@ const items3 = array.slice(start, end);
 console.log(start);
 
 
-  if(firstindex-1>items3){
-      document.getElementById("tbodydata").innerHTML ="";
-      document.getElementById("tfootdata").style.display = "none";
+  if(firstindex>items3){
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = true;
+      return document.getElementById("nextbtn").disabled =false;
       
   }
   else{
-    document.getElementById("tbodydata").innerHTML ="";
-      document.getElementById("tfootdata").style.display = "none";
       const disablebtn = document.getElementById("prevbtn");
       disablebtn.disabled = false;
   }
 
 
 
-document.getElementById("tbodydata").innerHTML ="";
-document.getElementById("tfootdata").style.display = "none";
+  document.getElementById("tbodydata").innerHTML ="";
+  document.getElementById("tfootdata").style.display = "none";
 
   for(let i=0; i<items3.length;i++){
     let tbodyrow = document.createElement("tr");
@@ -1607,5 +1622,5 @@ document.getElementById("tfootdata").style.display = "none";
     // last 
 
     document.getElementById('tbodydata').appendChild(tbodyrow);
-}
+  }
 }
