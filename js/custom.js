@@ -1557,12 +1557,9 @@ const lastItemIndex = array.length-1;
 
     let selected =document.getElementById("slicepage").value;
 
-
     document.getElementById("lastbtn").disabled =false;
     document.getElementById("prevbtn").disabled =false;
     document.getElementById("nextbtn").disabled =false;
-
-    
 
 
     start -=parseInt(selected);
@@ -1639,6 +1636,4 @@ const lastItemIndex = array.length-1;
           }
           document.getElementById('tbodydata').appendChild(tbodyrow);
         }
-    
-
   }
