@@ -1200,6 +1200,45 @@ let array = [
     "completed": false
   }
 ];
+
+// global function of reuseibility
+
+function createTable(tableCreate){
+  document.getElementById("tbodydata").innerHTML="";
+  document.getElementById("tfootdata").innerHTML="";
+
+  for(let i=0; i<array.length;i++){
+    let tbodyrow = document.createElement("tr");
+    let tdata1 = document.createElement("td");
+    let tdata2 = document.createElement("td");
+    let tdata3 = document.createElement("td");
+    tbodyrow.appendChild(tdata1);
+    tbodyrow.appendChild(tdata2);
+    tbodyrow.appendChild(tdata3);
+    tdata1.innerHTML = array[i].id;
+    tdata2.innerHTML = array[i].title;
+    tdata3.innerHTML = array[i].completed;
+      if(array[i].completed == true){
+        // document.getElementById("tbodydata").appendChild(tbodyrow);
+      document.getElementById("tfootdata").style.display = "none";
+      // console.log(globarray[i]);
+      document.getElementById("tbodydata").appendChild(tbodyrow);
+
+        // console condtion completed
+      if(array[i].completed == false){
+        count++;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+
+
 // slice array with display 10 items
 const size = 10;
 const items = array.slice(0, size);
@@ -1231,7 +1270,6 @@ document.getElementById("prevbtn").disabled =true;
 	}
 		// outside of loop section
 		// table footer data
-
 		let tfoot = document.createElement("tr");
 		let fdata1 = document.createElement("td");
 		let fdata2 = document.createElement("td");
@@ -1269,40 +1307,39 @@ document.getElementById("prevbtn").disabled =true;
   //   }
 
 
-
-        let inputvalue = document.getElementById("myinput").value;
-        let arrayres = document.getElementById("tbodydata");
-        let array2 = array.filter(function(value){
-          if(value.title.includes(inputvalue)){
-            return true;
-          }
-          else{
-            return false;
-          }
-        });
-        document.getElementById("tbodydata").innerHTML = "";
-        document.getElementById("tfootdata").innerHTML = "";
-        for(let i=0; i<array2.length;i++){
-          let tbodyrow = document.createElement("tr");
-          let tdata = document.createElement('td');
-          let tdata2 = document.createElement("td");
-          let tdata3 = document.createElement("td");
-          tbodyrow.appendChild(tdata);
-          tbodyrow.appendChild(tdata2);
-          tbodyrow.appendChild(tdata3)
-          tdata.innerHTML = array2[i].id;
-          tdata2.innerHTML = array2[i].title;
-          if(array2[i].completed== true){
-            tdata3.innerHTML ="completed";
-            count++;
-          }
-          else{
-            tdata3.innerHTML ="pending";
-          }
-		      document.getElementById('tbodydata').appendChild(tbodyrow);
-          // console.log(array2);
+    let inputvalue = document.getElementById("myinput").value;
+    let arrayres = document.getElementById("tbodydata");
+    let array2 = array.filter(function(value){
+      if(value.title.includes(inputvalue)){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    document.getElementById("tbodydata").innerHTML = "";
+    document.getElementById("tfootdata").innerHTML = "";
+    for(let i=0; i<array2.length;i++){
+      let tbodyrow = document.createElement("tr");
+      let tdata = document.createElement('td');
+      let tdata2 = document.createElement("td");
+      let tdata3 = document.createElement("td");
+      tbodyrow.appendChild(tdata);
+      tbodyrow.appendChild(tdata2);
+      tbodyrow.appendChild(tdata3)
+      tdata.innerHTML = array2[i].id;
+      tdata2.innerHTML = array2[i].title;
+      if(array2[i].completed== true){
+        tdata3.innerHTML ="completed";
+        count++;
+      }
+      else{
+        tdata3.innerHTML ="pending";
+      }
+      document.getElementById('tbodydata').appendChild(tbodyrow);
+      // console.log(array2);
     }
-}
+  }
 // we can create a dropdown have 3 option
 // are completed, uncompleted, and all
 // when user click on completed button
@@ -1312,37 +1349,15 @@ document.getElementById("prevbtn").disabled =true;
   function resultchange(event){
     // dropdown condition complited
     if(event.target.value==="completed"){
+      
 
-        // globarray = array.filter(function(resultfiter){
-        //   return resultfiter.completed == true;
+
+       let globarray = array.filter(function(resultfiter){
+          return resultfiter.completed == true;
          
-        // });
-    document.getElementById("tbodydata").innerHTML="";
-
-    for(let i=0; i<array.length;i++){
-      let tbodyrow = document.createElement("tr");
-      let tdata1 = document.createElement("td");
-      let tdata2 = document.createElement("td");
-      let tdata3 = document.createElement("td");
-      tbodyrow.appendChild(tdata1);
-      tbodyrow.appendChild(tdata2);
-      tbodyrow.appendChild(tdata3);
-      tdata1.innerHTML = array[i].id;
-      tdata2.innerHTML = array[i].title;
-      tdata3.innerHTML = array[i].completed;
-        if(array[i].completed == true){
-          // document.getElementById("tbodydata").appendChild(tbodyrow);
-        document.getElementById("tfootdata").style.display = "none";
-        // console.log(globarray[i]);
-        document.getElementById("tbodydata").appendChild(tbodyrow);
-
-          // console condtion completed
-        if(array[i].completed== false){
-          count++;
-        }
-
-      }
-    }
+        });
+        createTable(globalarray);
+    
     console.log(count);
   }
   // dropdown condition uncomplited
@@ -1403,11 +1418,14 @@ document.getElementById("prevbtn").disabled =true;
   let start, results, end;
   results = 10;
   start = 0;
-
+  
 // first page button functionality pagination
 function firstfunc(){
+
+  let selected = document.getElementById("slicepage").value;
+
   start=0;
-  end = 10;
+  end = parseInt(selected);
   const items2 = array.slice(start, end);
   console.log(start);
 
@@ -1444,15 +1462,23 @@ function firstfunc(){
 
 function lastfunc(){
 
+  let selected = document.getElementById("slicepage").value;
+
   document.getElementById("lastbtn").disabled =true;
   document.getElementById("nextbtn").disabled =true;
   document.getElementById("prevbtn").disabled =false;
   document.getElementById("firstbtn").disabled =false;
 
   // 10 index-1 find start;
-  results = 10;
+  // results = 10;
   end = array.length;
-  start = end -10;
+  start = end - parseInt(selected);
+
+  
+
+
+
+
 
   const items2 = array.slice(start, end);
   console.log(start);
@@ -1486,14 +1512,22 @@ function lastfunc(){
 
 // next button functionality
 function nextfunc(){
- 
-  document.getElementById("firstbtn").disabled =false;
+  document.getElementById("firstbtn").disabled = false;
 
-  start+=10;
-  end+=10;
+// dropdown value select page selction
+  let selected =document.getElementById("slicepage").value;
+
+  console.log({selected});
+
+
+  start+=parseInt(selected);
+  end = parseInt(selected) + start;
   
   const items2 = array.slice(start, end);
-  console.log(start);
+
+  console.log({start});
+  console.log({end});
+
 
 // when user click on next button when
 // the counter reached a specific conditon
@@ -1518,6 +1552,7 @@ const lastItemIndex = array.length-1;
       const disablebtn = document.getElementById("nextbtn");
       disablebtn.disabled = false;
   }
+  
     for(let i=0; i<items2.length;i++){
       let tbodyrow = document.createElement("tr");
       let tdata = document.createElement('td');
@@ -1537,19 +1572,30 @@ const lastItemIndex = array.length-1;
         tdata3.innerHTML ="pending";
       }
       document.getElementById('tbodydata').appendChild(tbodyrow);
+      console.log(items2);
+
   }
+  
 }
 
 // previous button functionality
   // start = 0;
-  end = start + 10;
+  // end = start + 10;
   function prevfunc(){
+
+    let selected =document.getElementById("slicepage").value;
+
+
     document.getElementById("lastbtn").disabled =false;
     document.getElementById("prevbtn").disabled =false;
     document.getElementById("nextbtn").disabled =false;
 
-    start -= 10;
-    end -= 10;
+    
+
+
+    start -=parseInt(selected);
+    end = parseInt(selected) + start;
+    
 
     let firstindex = end + 10;
     const items2 = array.slice(start, end);
@@ -1593,23 +1639,15 @@ const lastItemIndex = array.length-1;
 
 
   // slice array with dropdown
-
-  // for 10 item of slice array
-  const size2 = 10;
-  const items2 = array.slice(0, size2);
-  // for 25 item of slice array
-  const size3 =25;
-  const items3 = array.slice(0, size3);
-  // for 50 item of slice array
-  const size4 =50;
-  const items4 = array.slice(0, size4);
-
   function sliceArray(event){
-    // condition of 10 pages
-    if(event.target.value==="10"){
+    // slice value
+    const ending = parseInt(event.target.value);
+    const mArr = array.slice(0, ending);
+
+    // condition  pages
       document.getElementById("tbodydata").innerHTML="";
       document.getElementById("tfootdata").innerHTML="";
-        for(let i=0; i<items2.length;i++){
+        for(let i=0; i<mArr.length;i++){
           let tbodyrow = document.createElement("tr");
           let tdata = document.createElement('td');
           let tdata2 = document.createElement("td");
@@ -1621,62 +1659,14 @@ const lastItemIndex = array.length-1;
           tdata2.innerHTML = array[i].title;
           // completed item in table conditon
           if(array[i].completed== true){
-          tdata3.innerHTML ="completed";
-          count++;
+            tdata3.innerHTML ="completed";
+            count++;
           }
           else{
-          tdata3.innerHTML ="pending";
+            tdata3.innerHTML ="pending";
           }
           document.getElementById('tbodydata').appendChild(tbodyrow);
         }
-    }
-    else if(event.target.value==="25"){
-      document.getElementById("tbodydata").innerHTML="";
-      document.getElementById("tfootdata").innerHTML="";
-        for(let i=0; i<items3.length;i++){
-          let tbodyrow = document.createElement("tr");
-          let tdata = document.createElement('td');
-          let tdata2 = document.createElement("td");
-          let tdata3 = document.createElement("td");
-          tbodyrow.appendChild(tdata);
-          tbodyrow.appendChild(tdata2);
-          tbodyrow.appendChild(tdata3)
-          tdata.innerHTML = array[i].id;
-          tdata2.innerHTML = array[i].title;
-          // completed item in table conditon
-          if(array[i].completed== true){
-          tdata3.innerHTML ="completed";
-          count++;
-          }
-          else{
-          tdata3.innerHTML ="pending";
-          }
-          document.getElementById('tbodydata').appendChild(tbodyrow);
-        }
-    }
-    else if(event.target.value==="50"){
-      document.getElementById("tbodydata").innerHTML="";
-      document.getElementById("tfootdata").innerHTML="";
-        for(let i=0; i<items4.length;i++){
-          let tbodyrow = document.createElement("tr");
-          let tdata = document.createElement('td');
-          let tdata2 = document.createElement("td");
-          let tdata3 = document.createElement("td");
-          tbodyrow.appendChild(tdata);
-          tbodyrow.appendChild(tdata2);
-          tbodyrow.appendChild(tdata3)
-          tdata.innerHTML = array[i].id;
-          tdata2.innerHTML = array[i].title;
-          // completed item in table conditon
-          if(array[i].completed== true){
-          tdata3.innerHTML ="completed";
-          count++;
-          }
-          else{
-          tdata3.innerHTML ="pending";
-          }
-          document.getElementById('tbodydata').appendChild(tbodyrow);
-        }
-    }
+    
 
   }
