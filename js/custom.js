@@ -1201,13 +1201,14 @@ let array = [
   }
 ];
 
-// global function of reuseibility
+// global function of reusebility
 
-function createTable(tableCreate){
+function createTable(data){
+  console.log('data recieved',data);
   document.getElementById("tbodydata").innerHTML="";
   document.getElementById("tfootdata").innerHTML="";
 
-  for(let i=0; i<array.length;i++){
+  for(let i=0; i<data.length;i++){
     let tbodyrow = document.createElement("tr");
     let tdata1 = document.createElement("td");
     let tdata2 = document.createElement("td");
@@ -1215,19 +1216,21 @@ function createTable(tableCreate){
     tbodyrow.appendChild(tdata1);
     tbodyrow.appendChild(tdata2);
     tbodyrow.appendChild(tdata3);
-    tdata1.innerHTML = array[i].id;
-    tdata2.innerHTML = array[i].title;
-    tdata3.innerHTML = array[i].completed;
-      if(array[i].completed == true){
-        // document.getElementById("tbodydata").appendChild(tbodyrow);
-      document.getElementById("tfootdata").style.display = "none";
-      // console.log(globarray[i]);
-      document.getElementById("tbodydata").appendChild(tbodyrow);
+    tdata1.innerHTML = data[i].id;
+    tdata2.innerHTML = data[i].title;
+    
+    document.getElementById("tbodydata").appendChild(tbodyrow);
 
-        // console condtion completed
-      if(array[i].completed == false){
+      if(data[i].completed == true){
+      // console.log(globarray[i]);
+      tdata3.innerHTML = 'completed';
+      
+      if(data[i].completed == false){
         count++;
       }
+    }
+    else{
+        tdata3.innerHTML = 'pending';
     }
   }
 
@@ -1350,63 +1353,32 @@ document.getElementById("prevbtn").disabled =true;
     // dropdown condition complited
     if(event.target.value==="completed"){
       
-
-
-       let globarray = array.filter(function(resultfiter){
+       let sliceArray = array.filter(function(resultfiter){
           return resultfiter.completed == true;
-         
         });
-        createTable(globalarray);
+        // call table
+        createTable(sliceArray);
+        console.log(createTable);
     
     console.log(count);
   }
   // dropdown condition uncomplited
   else if(event.target.value==="uncompleted"){
-    document.getElementById("tbodydata").innerHTML="";
+    
+    let sliceArray = array.filter(function(resultfiter){
+      return resultfiter.completed == false;
+    });
+    // call table
+    createTable(sliceArray);
+    console.log(sliceArray);
 
-    for(let i=0; i<array.length;i++){
-      let tbodyrow = document.createElement("tr");
-      let tdata1 = document.createElement("td");
-      let tdata2 = document.createElement("td");
-      let tdata3 = document.createElement("td");
-      tbodyrow.appendChild(tdata1);
-      tbodyrow.appendChild(tdata2);
-      tbodyrow.appendChild(tdata3);
-      tdata1.innerHTML = array[i].id;
-      tdata2.innerHTML = array[i].title;
-      tdata3.innerHTML = array[i].completed;
-        if(array[i].completed == false){
-          // document.getElementById("tbodydata").appendChild(tbodyrow);
-          document.getElementById("tfootdata").style.display = "none";
-          // console.log(globarray[i]);
-          document.getElementById("tbodydata").appendChild(tbodyrow);
-          // console condition false
-          if(array[i].completed== false){
-            count++;
-          }
-        }
-    }
+    
   }
   // for all condition true
-  else if(event.target.value==="all"){
-    document.getElementById("tbodydata").innerHTML="";
-
-    for(let i=0; i<array.length;i++){
-      let tbodyrow = document.createElement("tr");
-      let tdata1 = document.createElement("td");
-      let tdata2 = document.createElement("td");
-      let tdata3 = document.createElement("td");
-      tbodyrow.appendChild(tdata1);
-      tbodyrow.appendChild(tdata2);
-      tbodyrow.appendChild(tdata3);
-      tdata1.innerHTML = array[i].id;
-      tdata2.innerHTML = array[i].title;
-      tdata3.innerHTML = array[i].completed;
+   if(event.target.value==="all"){
+    createTable(array);
     
-      document.getElementById("tfootdata").style.display = "none";
-      // console.log(globarray[i]);
-      document.getElementById("tbodydata").appendChild(tbodyrow);
-    }
+    
   }
 }
 /*
