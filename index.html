@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Js object table</title>
+	<title>fatching data in js</title>
 	<!-- CSS File attachment -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -17,48 +17,19 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </head>
 <body>
 	<div class="container mt-4">
-		<div class="" id="">
-			<input class="form-control mb-4" id="myinput" placeholder="Enter value to find" type="text" onkeyup="findvalue()" name="">
-			<select name="dropdown" class="btn btn-primary" id="dropchange" onchange="resultchange(event)">
-				<option value="" selected>select item</option>
-				<option id="" value="completed">completed</option>
-				<option value="uncompleted">uncompleted</option>
-				<option value="all">all</option>
-			</select>
-			<p id="alertmessage" class="h2"></p>
-			<table class="table" id="tableappend">
-				<thead id="thead_data">
-					<td>ID</td> 
-					<td>Title</td>
-					<td>Completed</td>
-				</thead>
-				<tbody id="tbodydata"></tbody>
-				<tfoot id="tfootdata"></tfoot>
-			</table>
-			<div class="mb-4 d-flex gap-2 flex-row justify-content-between">	
-				<div class="item">
-				<button class="btn btn-primary" id="firstbtn" onclick="firstfunc()">First</button>
-				<button class="btn btn-primary" id="nextbtn" onclick="nextfunc()">Next</button>
-				<button class="btn btn-primary" id="prevbtn" onclick="prevfunc()">previous</button>
-				<button class="btn btn-primary" id="lastbtn" onclick="lastfunc()">Last</button>
-				</div>
-				<div class="item">
-					<select name="slicepage" selected class="btn btn-primary" id="slicepage" onchange="sliceArray(event)">
-						<option id="" value="15" >please select table row</option>
-						<option id="" value="10" selected>10</option>
-						<option value="25">25</option>
-						<option value="50" >50</option>
-						<option value="14" >14</option>
-						
-					</select>
-				</div>
-			</div>
-			
-		</div>
+		<table class="table" id="createTable">
+			<thead id="thead_data">
+				<td>Name</td> 
+				<td>Email</td>
+				<td>City</td>
+				<td>Company Name</td>
+				<td>Complete Address</td>
+			</thead>
+			<tbody id="tbodydata"></tbody>
+		</table>
 	</div>
 
 
