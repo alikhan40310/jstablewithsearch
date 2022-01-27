@@ -1,5 +1,5 @@
 // fetching data table
-
+let x;
 fetch('https://jsonplaceholder.typicode.com/users').then(function(data){
   return data.json()
 }).then(function(data){
